@@ -11,9 +11,9 @@ import {Provider} from "react-redux";
 import 'react-dates/lib/css/_datepicker.scss'
 
 const store = configureStore();
-store.dispatch(addExpense({description:'Water Bill', amount: 2200, createdAt: 1754853694575,note: ''}))
-store.dispatch(addExpense({description:'Gas Bill', amount: 100, createdAt: 1752175377251,note: ''}))
-store.dispatch(addExpense({description:'Rent', amount: 1400, createdAt: 1753989857361,note: ''}))
+// store.dispatch(addExpense({description:'Water Bill', amount: 2200, createdAt: 1754853694575,note: ''}))
+// store.dispatch(addExpense({description:'Gas Bill', amount: 100, createdAt: 1752175377251,note: ''}))
+// store.dispatch(addExpense({description:'Rent', amount: 1400, createdAt: 1753989857361,note: ''}))
 
 
 // setTimeout(() => {
@@ -21,7 +21,7 @@ store.dispatch(addExpense({description:'Rent', amount: 1400, createdAt: 17539898
 // }, 3000)
 
 
-const state = store.getState()
+// const state = store.getState()
 
 const JSX = (
     <Provider store={store}>
