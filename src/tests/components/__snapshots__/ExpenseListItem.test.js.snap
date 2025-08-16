@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Testing the ExpenseListItem with few values 1`] = `
+<div>
+  <Link
+    to="/edit/1"
+  >
+    Rent
+  </Link>
+  <p>
+    1250
+     - 
+    January 1, 1970
+  </p>
+</div>
+`;

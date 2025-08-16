@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Testing the method of CreatePage with default values 1`] = `
+<div>
+  <ExpenseForm
+    onSubmit={[Function]}
+  />
+</div>
+`;

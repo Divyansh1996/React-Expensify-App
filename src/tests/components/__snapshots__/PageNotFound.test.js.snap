@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Testing the PageNotFound page 1`] = `
+<p>
+  This is a Not Found 404 Page - 
+  <Link
+    to="/"
+  >
+    Go to Home Page
+  </Link>
+</p>
+`;

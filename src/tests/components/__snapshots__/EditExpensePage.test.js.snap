@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Testing the editExpensePage with Snapshot 1`] = `
+<div>
+  <ExpenseForm
+    expense={
+      {
+        "amount": 1250,
+        "createdAt": 0,
+        "description": "Rent",
+        "id": "1",
+        "note": "",
+      }
+    }
+    onSubmit={[Function]}
+  />
+  <button
+    onClick={[Function]}
+  >
+    Remove
+  </button>
+</div>
+`;
