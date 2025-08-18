@@ -8,7 +8,7 @@ import {addExpense, removeExpense, editExpense} from "./actions/expenses"
 import {editText, sortByDate, sortByAmount, setStartDate, setEndDate} from "./actions/filter"
 import getExpenses from  "./selectors/expenses";
 import {Provider} from "react-redux";
-import 'react-dates/lib/css/_datepicker.scss'
+import 'react-dates/lib/css/_datepicker.css'
 
 const store = configureStore();
 // store.dispatch(addExpense({description:'Water Bill', amount: 2200, createdAt: 1754853694575,note: ''}))
