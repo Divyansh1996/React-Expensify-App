@@ -8,10 +8,10 @@ module.exports = (env) => {
     return {
         entry:"./src/app.js",
         output:{
-            path: path.join(__dirname,'public'),
+            path: path.join(__dirname,'public','dist'),
             // filename: "bundle.js",
             filename: "[name].[contenthash].js",
-            publicPath: '/',
+            publicPath: "/dist/",
             clean:true
         },
     
@@ -66,6 +66,7 @@ module.exports = (env) => {
     plugins: [
             new HtmlWebpackPlugin({
                 template: './public/index.html',
+                filename: path.resolve(__dirname, 'public/index.html')
             }),
             new MiniCssExtractPlugin({
                 filename: '[name].[contenthash].css',
@@ -88,6 +89,9 @@ module.exports = (env) => {
     devServer:{
         static: {
             directory: path.join(__dirname, 'public')
+        },
+        devMiddleware: {
+            publicPath: '/dist/'   
         },
         port:8080,
         historyApiFallback:true,
