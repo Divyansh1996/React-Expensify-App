@@ -11,7 +11,7 @@ module.exports = (env) => {
             path: path.join(__dirname,'public','dist'),
             // filename: "bundle.js",
             filename: "[name].[contenthash].js",
-            publicPath: "/dist/",
+            publicPath: "/",
             clean:true
         },
     
@@ -66,7 +66,8 @@ module.exports = (env) => {
     plugins: [
             new HtmlWebpackPlugin({
                 template: './public/index.html',
-                filename: path.resolve(__dirname, 'public/index.html')
+                // filename: path.resolve(__dirname, 'public/index.html')
+                filename:'index.html'
             }),
             new MiniCssExtractPlugin({
                 filename: '[name].[contenthash].css',
@@ -88,10 +89,7 @@ module.exports = (env) => {
     devtool:env === 'production'? 'source-map': 'inline-source-map',
     devServer:{
         static: {
-            directory: path.join(__dirname, 'public')
-        },
-        devMiddleware: {
-            publicPath: '/dist/'   
+            directory: path.join(__dirname, 'public', 'dist')
         },
         port:8080,
         historyApiFallback:true,
