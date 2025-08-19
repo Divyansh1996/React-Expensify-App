@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Testing with a single expense 1`] = `
+<div>
+  Viewing 
+  1
+   
+  expense
+   totalling 
+  $23,131.00
+</div>
+`;
+
+exports[`Testing with multiple expense 1`] = `
+<div>
+  Viewing 
+  4
+   
+  expenses
+   totalling 
+  $2,313,312,311.00
+</div>
+`;

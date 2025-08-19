@@ -8,7 +8,7 @@ exports[`Testing the ExpenseListItem with few values 1`] = `
     Rent
   </Link>
   <p>
-    1250
+    $1,250.00
      - 
     January 1, 1970
   </p>
