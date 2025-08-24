@@ -9,6 +9,7 @@ import {editText, sortByDate, sortByAmount, setStartDate, setEndDate} from "./ac
 import getExpenses from  "./selectors/expenses";
 import {Provider} from "react-redux";
 import 'react-dates/lib/css/_datepicker.css'
+import './firebase/firebase'
 
 const store = configureStore();
 // store.dispatch(addExpense({description:'Water Bill', amount: 2200, createdAt: 1754853694575,note: ''}))
