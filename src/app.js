@@ -4,7 +4,7 @@ import "normalize.css";
 import "./styles/styles.scss";
 import configureStore from './store/store';
 import AppRouter from "./router/AppRouter";
-import {addExpense, removeExpense, editExpense} from "./actions/expenses"
+import {startSetExpenses} from "./actions/expenses"
 import {editText, sortByDate, sortByAmount, setStartDate, setEndDate} from "./actions/filter"
 import getExpenses from  "./selectors/expenses";
 import {Provider} from "react-redux";
@@ -30,4 +30,8 @@ const JSX = (
     </Provider>
 )
 
-ReactDOM.render(JSX,document.getElementById("newApp"))
+ReactDOM.render(<p>Loading ...</p>,document.getElementById("newApp"))
+
+store.dispatch(startSetExpenses()).then(() => {
+    ReactDOM.render(JSX,document.getElementById("newApp"))
+})

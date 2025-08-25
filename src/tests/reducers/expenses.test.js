@@ -61,3 +61,21 @@ test("Testing the method with action type as ADD_EXPENSE with new Value", () => 
     const state = expenseReducer(expenses, action)
     expect(state).toEqual([...expenses, expense])
 })
+
+test("Testing the method with action type as SET_EXPENSE with New Values", () => {
+    const expense = {
+        id:'4',
+        description: "Household Items",
+        note: '',
+        amount: 2000,
+        createdAt:moment(0).valueOf()
+    }
+    const action = {
+        type: "SET_EXPENSES",
+        expenses: [expense]
+    }
+    const state = expenseReducer(expenses, action)
+    expect(state).toEqual([expense])
+})
+
+

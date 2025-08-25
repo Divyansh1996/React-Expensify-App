@@ -1,4 +1,4 @@
-import { addExpense, removeExpense, editExpense,startAddExpense } from "../../actions/expenses";
+import { addExpense, removeExpense, editExpense,startAddExpense, setExpenses, startSetExpenses } from "../../actions/expenses";
 import expenses from '../fixtures/expenses'
 import {configureStore} from 'redux-mock-store'
 import { thunk } from "redux-thunk";
@@ -7,6 +7,15 @@ import { getDatabase, ref, set,remove, update, get, onValue, push, onChildRemove
 
 
 const createStore = configureStore([thunk])
+
+
+beforeEach((done) => {
+    const expensesData = {}
+    expenses.forEach(({description, note, amount, createdAt, id}) => {
+        expensesData[id] = {description, note, amount, createdAt}
+    })
+    set(ref(db, 'expenses'), expensesData).then (() => done())
+})
 
 test('to test remove expense method', () => {
   const result = removeExpense({id:'123abc'})
@@ -77,17 +86,23 @@ test("testing the startExpense testcase with default values", (done) => {
 })
 
 
+test("Testing the setExpenses action", () => {
+    const actions = setExpenses(expenses)
+    expect(actions).toEqual({
+        type: "SET_EXPENSES",
+        expenses
+    })
+})
 
-// test("Testing the Add Expense action without any values", () => {
-//     const result = addExpense();
-//     expect(result).toEqual({
-//         type:"ADD_EXPENSE",
-//         expense:{
-//             id:expect.any(String),
-//             description:'',
-//             note:'',
-//             amount:0,
-//             createdAt:''
-//         }
-//     })
-// })
+test("Testing the startSetExpenses actions", (done) => {
+    const store = createStore({})
+    store.dispatch(startSetExpenses()).then(() => {
+        const actions = store.getActions();
+        expect(actions[0]).toEqual({
+            type: "SET_EXPENSES",
+            expenses
+        })
+        done()
+    })
+
+})
