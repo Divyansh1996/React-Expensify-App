@@ -1,4 +1,4 @@
-import { addExpense, removeExpense, editExpense,startAddExpense, setExpenses, startSetExpenses } from "../../actions/expenses";
+import { addExpense, removeExpense, editExpense,startAddExpense, setExpenses, startSetExpenses, startRemoveExpense } from "../../actions/expenses";
 import expenses from '../fixtures/expenses'
 import {configureStore} from 'redux-mock-store'
 import { thunk } from "redux-thunk";
@@ -105,4 +105,17 @@ test("Testing the startSetExpenses actions", (done) => {
         done()
     })
 
+})
+
+
+test("Testing the startRemoveExpense actions", (done) => {
+    const store = createStore({})
+    store.dispatch(startRemoveExpense({id:expenses[0].id})).then(()=> {
+        const actions = store.getActions();
+        expect(actions[0]).toEqual({
+            type: "REMOVE_EXPENSE",
+            id:expenses[0].id
+        })
+        done();
+    })
 })
