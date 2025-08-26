@@ -1,4 +1,4 @@
-import { addExpense, removeExpense, editExpense,startAddExpense, setExpenses, startSetExpenses, startRemoveExpense } from "../../actions/expenses";
+import { addExpense, removeExpense, editExpense,startAddExpense, setExpenses, startSetExpenses, startRemoveExpense, startEditExpense } from "../../actions/expenses";
 import expenses from '../fixtures/expenses'
 import {configureStore} from 'redux-mock-store'
 import { thunk } from "redux-thunk";
@@ -34,6 +34,24 @@ test('Testing the Edit Expense Action Method', () => {
         updates: {
             note: 'New Note Value'
         }
+    })
+})
+
+test("Testing the startEditExpense actions", (done) => {
+    const store = createStore({})
+    store.dispatch(startEditExpense(expenses[0].id, {amount:21})).then(() => {
+        const actions = store.getActions();
+        expect(actions[0]).toEqual({
+            type: "EDIT_EXPENSE",
+            id: expenses[0].id,
+            updates: {
+                amount: 21
+            }
+        })
+        get(ref(db, `expenses/${expenses[0].id}`)).then((snapshot) => {
+            expect(snapshot.val().amount).toBe(21);
+        })
+        done()
     })
 })
 
@@ -116,6 +134,8 @@ test("Testing the startRemoveExpense actions", (done) => {
             type: "REMOVE_EXPENSE",
             id:expenses[0].id
         })
-        done();
+        return get(ref(db, `expenses/${expenses[0].id}`)).then(snapshot => {
+            expect(snapshot.val()).toBeFalsy();
+        }).then(() => done());
     })
 })

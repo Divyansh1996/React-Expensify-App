@@ -3,11 +3,11 @@ import { useParams,useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import ExpenseForm from "./ExpenseForm";
 import expenses from "../selectors/expenses";
-import { editExpense,startRemoveExpense } from "../actions/expenses";
+import { editExpense,startRemoveExpense,startEditExpense } from "../actions/expenses";
 
 export class EditPage extends React.Component{
     onSubmitChange = (expense) =>{
-         this.props.editNewExpense(expense)
+         this.props.startEditExpense(expense)
          this.props.history.push("/")
     }
     onRemove = () => {
@@ -29,7 +29,7 @@ const mapStatetoProps = (state,props) => ({
 })
 
 const mapDispatchtoProps = (dispatch,props) => ({
-    editNewExpense: (expense) => {dispatch(editExpense(props.match.params.id,expense))},
+    startEditExpense: (expense) => {dispatch(startEditExpense(props.match.params.id,expense))},
     removeNewExpense: () => {dispatch(startRemoveExpense({id:props.match.params.id}))}
 })
 export default connect(mapStatetoProps, mapDispatchtoProps)(EditPage);
