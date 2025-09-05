@@ -34,5 +34,10 @@ exports[`Doing the testing for Header 1`] = `
     Help Page Link
   </NavLink>
   <br />
+  <button
+    onClick={[Function]}
+  >
+    Logout
+  </button>
 </div>
 `;

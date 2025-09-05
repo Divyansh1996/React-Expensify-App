@@ -1,15 +1,20 @@
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {Router, Route, Switch} from 'react-router-dom';
 import DashboardPage from '../components/DashboardPage';
 import CreatePage from '../components/CreatePage';
+import createHistory from 'history/createBrowserHistory';
 import EditPage from '../components/EditPage';
 import PageNotFound from '../components/PageNotFound';
 import HelpPage from '../components/HelpPage';
 import Header from '../components/Header';
 import React from "react";
+import LoginPage from '../components/LoginPage';
+import PrivateRoute from './PrivateRoute';
+
+export const history = createHistory();
+
 const AppRouter = () => (
-    <BrowserRouter>
+    <Router history={history}>
         <div>
-            <Header />
             {/* <Routes>
                 <Route path="/" element={<DashboardPage />}/>
                 <Route path="/create" element={<CreatePage />} />
@@ -19,15 +24,16 @@ const AppRouter = () => (
                 <Route path = "*" element={<PageNotFound />}/>
             </Routes> */}
             <Switch>
-                <Route path="/" component={DashboardPage} exact ={true}/>
-                <Route path="/create" component={CreatePage} />
-                <Route path="/edit/:id" component={EditPage} exact ={true}/>
-                <Route path="/edit" component={EditPage} />
-                <Route path="/help" component={HelpPage} />
+                <Route path="/" component={LoginPage} exact ={true}/>
+                <PrivateRoute path="/dashboard" component={DashboardPage} exact ={true}/>
+                <PrivateRoute path="/create" component={CreatePage} />
+                <PrivateRoute path="/edit/:id" component={EditPage} exact ={true}/>
+                <PrivateRoute path="/edit" component={EditPage} />
+                <PrivateRoute path="/help" component={HelpPage} />
                 <Route path = "*" component={PageNotFound}/>
             </Switch>
         </div>
-    </BrowserRouter>
+    </Router>
 );
 
 export default AppRouter;

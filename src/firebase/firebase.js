@@ -18,8 +18,6 @@ const firebaseConfig = {
   measurementId: process.env.FIREBASE_MEASUREMENT_ID,
   databaseURL: process.env.FIREBASE_DATABASE_URL
 };
-
-console.log(firebaseConfig)
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app)
