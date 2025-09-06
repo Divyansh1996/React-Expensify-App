@@ -7,14 +7,15 @@ import { getDatabase, ref, set,remove, update, get, onValue, push, onChildRemove
 
 
 const createStore = configureStore([thunk])
-
+const uid = 'testuid'
+const defaultAuthState = {auth:{uid}}
 
 beforeEach((done) => {
     const expensesData = {}
     expenses.forEach(({description, note, amount, createdAt, id}) => {
         expensesData[id] = {description, note, amount, createdAt}
     })
-    set(ref(db, 'expenses'), expensesData).then (() => done())
+    set(ref(db, `users/${uid}/expenses`), expensesData).then (() => done())
 })
 
 test('to test remove expense method', () => {
@@ -38,7 +39,7 @@ test('Testing the Edit Expense Action Method', () => {
 })
 
 test("Testing the startEditExpense actions", (done) => {
-    const store = createStore({})
+    const store = createStore(defaultAuthState)
     store.dispatch(startEditExpense(expenses[0].id, {amount:21})).then(() => {
         const actions = store.getActions();
         expect(actions[0]).toEqual({
@@ -48,7 +49,7 @@ test("Testing the startEditExpense actions", (done) => {
                 amount: 21
             }
         })
-        get(ref(db, `expenses/${expenses[0].id}`)).then((snapshot) => {
+        get(ref(db, `users/${uid}/expenses/${expenses[0].id}`)).then((snapshot) => {
             expect(snapshot.val().amount).toBe(21);
         })
         done()
@@ -73,14 +74,14 @@ test("testing the startExpense testcase with some values", (done) => {
         "note": ''
     }
 
-    const store = createStore({})
+    const store = createStore(defaultAuthState)
     store.dispatch(startAddExpense(expenseData)).then(() => {
         const actions = store.getActions()
         expect(actions[0]).toEqual({
             type:'ADD_EXPENSE',
             expense: {id:expect.any(String), ...expenseData}
         })
-        return get(ref(db, `expenses/${actions[0].expense.id}`))
+        return get(ref(db, `users/${uid}/expenses/${actions[0].expense.id}`))
         }).then((snapshot) => {
                 expect(snapshot.val()).toEqual(expenseData)
                 done()
@@ -89,14 +90,14 @@ test("testing the startExpense testcase with some values", (done) => {
 
 test("testing the startExpense testcase with default values", (done) => {
     const expenseData = {}
-    const store = createStore({})
+    const store = createStore(defaultAuthState)
     store.dispatch(startAddExpense(expenseData)).then(() => {
         const actions = store.getActions()
         expect(actions[0]).toEqual({
             type:'ADD_EXPENSE',
             expense: {id:expect.any(String),description:'', note:'', amount: 0, createdAt:''}
         })
-        return get(ref(db, `expenses/${actions[0].expense.id}`))
+        return get(ref(db, `users/${uid}/expenses/${actions[0].expense.id}`))
         }).then((snapshot) => {
                 expect(snapshot.val()).toEqual({description:'', note:'', amount: 0, createdAt:''})
                 done()
@@ -113,11 +114,11 @@ test("Testing the setExpenses action", () => {
 })
 
 test("Testing the startSetExpenses actions", (done) => {
-    const store = createStore({})
+    const store = createStore(defaultAuthState)
     store.dispatch(startSetExpenses()).then(() => {
         const actions = store.getActions();
         expect(actions[0]).toEqual({
-            type: "SET_EXPENSES",
+            type: "SET_EXPENSES",   
             expenses
         })
         done()
@@ -127,14 +128,14 @@ test("Testing the startSetExpenses actions", (done) => {
 
 
 test("Testing the startRemoveExpense actions", (done) => {
-    const store = createStore({})
+    const store = createStore(defaultAuthState)
     store.dispatch(startRemoveExpense({id:expenses[0].id})).then(()=> {
         const actions = store.getActions();
         expect(actions[0]).toEqual({
             type: "REMOVE_EXPENSE",
             id:expenses[0].id
         })
-        return get(ref(db, `expenses/${expenses[0].id}`)).then(snapshot => {
+        return get(ref(db, `users/${uid}/expenses/${expenses[0].id}`)).then(snapshot => {
             expect(snapshot.val()).toBeFalsy();
         }).then(() => done());
     })

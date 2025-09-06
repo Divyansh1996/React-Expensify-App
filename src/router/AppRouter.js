@@ -4,12 +4,10 @@ import CreatePage from '../components/CreatePage';
 import createHistory from 'history/createBrowserHistory';
 import EditPage from '../components/EditPage';
 import PageNotFound from '../components/PageNotFound';
-import HelpPage from '../components/HelpPage';
-import Header from '../components/Header';
 import React from "react";
 import LoginPage from '../components/LoginPage';
 import PrivateRoute from './PrivateRoute';
-
+import PublicRoute from './PublicRoute';
 export const history = createHistory();
 
 const AppRouter = () => (
@@ -24,12 +22,11 @@ const AppRouter = () => (
                 <Route path = "*" element={<PageNotFound />}/>
             </Routes> */}
             <Switch>
-                <Route path="/" component={LoginPage} exact ={true}/>
+                <PublicRoute path="/" component={LoginPage} exact ={true}/>
                 <PrivateRoute path="/dashboard" component={DashboardPage} exact ={true}/>
                 <PrivateRoute path="/create" component={CreatePage} />
                 <PrivateRoute path="/edit/:id" component={EditPage} exact ={true}/>
                 <PrivateRoute path="/edit" component={EditPage} />
-                <PrivateRoute path="/help" component={HelpPage} />
                 <Route path = "*" component={PageNotFound}/>
             </Switch>
         </div>

@@ -8,7 +8,7 @@ exports[`Doing the testing for Header 1`] = `
   <NavLink
     activeClassName="nav-properties"
     exact={true}
-    to="/"
+    to="/dashboard"
   >
     DashboardPage Link
   </NavLink>
