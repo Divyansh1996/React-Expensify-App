@@ -1,7 +1,7 @@
 node_modules/
 .env.development
 .env.test
-/public/dist/*.js
-/public/dist/*.css
-/public/dist/*.html
-/public/dist/*.txt
+# /public/dist/*.js
+# /public/dist/*.css
+# /public/dist/*.html
+# /public/dist/*.txt
