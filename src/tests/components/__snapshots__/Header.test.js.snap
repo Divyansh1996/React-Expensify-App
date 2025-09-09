@@ -1,43 +1,30 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Doing the testing for Header 1`] = `
-<div>
-  <h1>
-    Expensify App
-  </h1>
-  <NavLink
-    activeClassName="nav-properties"
-    exact={true}
-    to="/dashboard"
+<header
+  className="header"
+>
+  <div
+    className="content-container"
   >
-    DashboardPage Link
-  </NavLink>
-  <br />
-  <NavLink
-    activeClassName="nav-properties"
-    to="/create"
-  >
-    Create Page Link
-  </NavLink>
-  <br />
-  <NavLink
-    activeClassName="nav-properties"
-    to="/edit"
-  >
-    Edit Page Link
-  </NavLink>
-  <br />
-  <NavLink
-    activeClassName="nav-properties"
-    to="/help"
-  >
-    Help Page Link
-  </NavLink>
-  <br />
-  <button
-    onClick={[Function]}
-  >
-    Logout
-  </button>
-</div>
+    <div
+      className="header__content"
+    >
+      <Link
+        className="header__title"
+        to="/dashboard"
+      >
+        <h1>
+          Expensify
+        </h1>
+      </Link>
+      <button
+        className="button-layout button-layout--link"
+        onClick={[Function]}
+      >
+        Logout
+      </button>
+    </div>
+  </div>
+</header>
 `;

@@ -1,0 +1,17 @@
+.button-layout{
+    color:white;
+    background-color: $blue;
+    padding: 1rem 2rem;
+    border: none;
+    font-size: $font-size-large;
+    font-weight: 300;
+}
+
+.button-layout--link{
+    background: none;
+}
+
+.button-layout--secondary{
+    @extend .button-layout;
+    background-color: #888888;
+}

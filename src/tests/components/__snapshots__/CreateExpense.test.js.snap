@@ -2,8 +2,26 @@
 
 exports[`Testing the method of CreatePage with default values 1`] = `
 <div>
-  <ExpenseForm
-    onSubmit={[Function]}
-  />
+  <div
+    className="page-header"
+  >
+    <div
+      className="content-container"
+    >
+      <div
+        className="page-header__title"
+      >
+        Add Expense
+      </div>
+    </div>
+  </div>
+  <div
+    className="content-container"
+  >
+    <ExpenseForm
+      buttonName="Add Expense"
+      onSubmit={[Function]}
+    />
+  </div>
 </div>
 `;

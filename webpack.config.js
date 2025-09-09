@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { url } = require('inspector');
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development'
 
@@ -14,7 +15,7 @@ else if(process.env.NODE_ENV === 'development'){
 module.exports = (env) => {
     const MiniCssExtractPlugin = require('mini-css-extract-plugin');
     return {
-        entry:"./src/app.js",
+        entry:['babel-polyfill', './src/app.js'],
         output:{
             path: path.join(__dirname,'public','dist'),
             // filename: "bundle.js",
@@ -59,13 +60,14 @@ module.exports = (env) => {
                 {
                     loader: 'css-loader',
                     options: {
-                        sourceMap: true
+                        sourceMap: true,
+                        url: false
                     }
                 },
                 {
                     loader: 'sass-loader',
                     options: {
-                        sourceMap: true
+                        sourceMap: true,
                     }
                 }]
         }
@@ -75,7 +77,8 @@ module.exports = (env) => {
             new HtmlWebpackPlugin({
                 template: './public/index.html',
                 // filename: path.resolve(__dirname, 'public/index.html')
-                filename:'index.html'
+                filename:'index.html',
+                favicon: './public/images/favicon.png'
             }),
             new MiniCssExtractPlugin({
                 filename: '[name].[contenthash].css',

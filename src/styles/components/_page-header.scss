@@ -1,0 +1,22 @@
+.page-header{
+    background:$off-white;
+    padding: 3rem 0;
+    margin-bottom: 2rem;
+    font-size: $title-size;
+}
+
+.page-header__title{
+    margin:0;
+    font-weight: 300;
+    span{
+        font-weight: bold;
+    }
+}
+
+.page-header__actions{
+    margin-top: 1rem;
+    .button-layout{
+        text-decoration: none;
+        display: inline-block;
+    }
+}

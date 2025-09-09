@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Testing the Loading Page 1`] = `
+<div
+  className="loading"
+>
+  <img
+    className="loading__image"
+    src="/images/loader.gif"
+  />
+</div>
+`;

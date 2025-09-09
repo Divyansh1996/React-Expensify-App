@@ -10,6 +10,7 @@ import {Provider} from "react-redux";
 import 'react-dates/lib/css/_datepicker.css'
 import './firebase/firebase'
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import LoadingPage from "./components/LoadingPage";
 
 const store = configureStore();
 // store.dispatch(addExpense({description:'Water Bill', amount: 2200, createdAt: 1754853694575,note: ''}))
@@ -30,7 +31,7 @@ const JSX = (
     </Provider>
 )
 
-ReactDOM.render(<p>Loading ...</p>,document.getElementById("newApp"))
+ReactDOM.render(<LoadingPage />,document.getElementById("newApp"))
 
 let isRendered = false;
 const renderApp = () => {

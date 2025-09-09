@@ -1,23 +1,71 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Testing with a single expense 1`] = `
-<div>
-  Viewing 
-  1
-   
-  expense
-   totalling 
-  $23,131.00
+<div
+  className="page-header"
+>
+  <div
+    className="content-container"
+  >
+    <div
+      className="page-header__title"
+    >
+      Viewing 
+      <span>
+        1
+      </span>
+       
+      expense
+       totalling 
+      <span>
+        $23,131.00
+      </span>
+    </div>
+    <div
+      className="page-header__actions"
+    >
+      <Link
+        className="button-layout"
+        to="/create"
+      >
+        Add Expense
+      </Link>
+    </div>
+  </div>
 </div>
 `;
 
 exports[`Testing with multiple expense 1`] = `
-<div>
-  Viewing 
-  4
-   
-  expenses
-   totalling 
-  $2,313,312,311.00
+<div
+  className="page-header"
+>
+  <div
+    className="content-container"
+  >
+    <div
+      className="page-header__title"
+    >
+      Viewing 
+      <span>
+        4
+      </span>
+       
+      expenses
+       totalling 
+      <span>
+        $2,313,312,311.00
+      </span>
+    </div>
+    <div
+      className="page-header__actions"
+    >
+      <Link
+        className="button-layout"
+        to="/create"
+      >
+        Add Expense
+      </Link>
+    </div>
+  </div>
 </div>
 `;

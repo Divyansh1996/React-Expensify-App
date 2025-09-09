@@ -1,10 +1,16 @@
 //Color
-//Font-Size:
+$dark-grey:#333;
+$blue:  darken($color: lightblue, $amount: 40%);
+$dark-blue: #364051;
+$off-white: #f7f7f7;
+$grey: #666;
 
+//Font-Size:
+$font-size-large: 1.6rem;
+$font-size-small: 1.3rem;
 $body-size:1.6rem;
 $title-size: 3.8rem;
 $subtitle-size: 1.8rem;
 
 //Width
-
 $desktop-width:48rem;
