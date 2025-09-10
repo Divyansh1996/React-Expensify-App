@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { url } = require('inspector');
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development'
@@ -82,6 +83,14 @@ module.exports = (env) => {
             }),
             new MiniCssExtractPlugin({
                 filename: '[name].[contenthash].css',
+            }),
+            new CopyWebpackPlugin({
+                patterns: [
+                {
+                    from: path.resolve(__dirname, 'public/images'),
+                    to: 'images'   // This will put them in public/dist/images/
+                }
+                ]
             }),
             // optional if you need "process" polyfill
             new webpack.ProvidePlugin({
